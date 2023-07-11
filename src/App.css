@@ -1,10 +1,7 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  background-color: #ffffff;
+  min-height: 100vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,14 +11,18 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* padding: 500px 100px 500px 100px; */
+  padding:  0px 0px 0px 110px;
+  background-color: #ffffff;
+
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(7px + 2vmin);
+  color: rgb(0, 0, 0);
+  min-width: min-content;
 }
 
 .App-link {
@@ -35,4 +36,76 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+caption {
+  font-size: 30px !important;
+  padding: 5px;
+  font-family:'lato'
+}
+
+
+
+table.tb { 
+  border-collapse: collapse; 
+  width:300px; 
+  /* padding: 300px; */
+}
+.tb th, .tb td { 
+  padding: 9px; 
+  border: solid 2px #777; 
+}
+.tb th { 
+  padding: 9px;  
+  background-color: #e8f5ff;
+}
+
+.padding-5 {
+  padding-left: 190px;
+}
+.padding-left {
+  padding-left: 470px;
+}
+
+.font-8 {
+  font-size: 20px !important ;
+  margin: 5px;
+}
+
+/* Slideshow */
+
+.slideshow {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.slideshowSlider {
+  white-space: normal;
+  transition: 10ms;
+}
+
+.slide {
+  display: inline-block;
+  height: 400px;
+  width: 100%;
+  border-radius: 40px;
+}
+
+/* Buttons */
+.slideshowDots {
+  text-align: center;
+}
+.slideshowDot {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 15px 7px 0px;
+  background-color: #c4c4c4;
+}
+
+.slideshowDot.active {
+  background-color: #c5b4d3;
 }
