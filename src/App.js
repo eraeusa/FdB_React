@@ -55,7 +55,7 @@ function App() {
   }, [index]);
 
   var date = moment().utcOffset("+20:00").format("YYYY-MM-DD hh:mm:ss a");
-  var dateofsum = moment(summary.Results[0].WORK_DT.toString()).format("MM/DD");
+  
   // console.log(len(json))
   // const [items, setItems] = useState([])
 
@@ -192,6 +192,7 @@ function App() {
   // } = useTable({ columns, data })
   var total = 0;
   var tmp = [];
+  var tmp2 = [];
   var dict = {};
   return (
     <div className="App">
@@ -213,7 +214,7 @@ function App() {
           //style = {{transform:  'translateX(-0%)'}}
         >
           <header className="App-header">
-            <div className="padding-5">
+            <div className="big">
               <table className="tb" title="Production Status">
                 <caption>Production Status</caption>
                 <thead>
@@ -233,23 +234,37 @@ function App() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    {/* <td key={summary.Results2[0].WORK_DT} rowSpan={summary.Results2.length} >{json[0].WORK_DT.toString().substring(0,4)}</td> */}
-                    <td style={{ backgroundColor: "#f0f0f0" }}
-                      key={summary.Results[0].WORK_DT}
-                      rowSpan={summary.Results2.length}
-                    >
-                      {dateofsum}
-                    </td>
-                  </tr>
+
+{/*                  
+                  {(() => {
+                      for (let i = 0; i < summary.Results.length; i+=2) {
+                        var dateofsum = moment(summary.Results[i].WORK_DT.toString()).format("MM/DD");
+                        tmp.push(<tr><td rowSpan={2}>{dateofsum}</td> <td  rowSpan={2}>{summary.Results[i].TITLE}</td></tr>)
+                   
+                      }
+                      return tmp
+                      })()}
+                */}
                   {summary.Results.map((data, index) => {
                     var counter = 1;
                     return (
                       <tr key={index}>
-                        {/* <td style={{ backgroundColor: "#f0f0f0" }} key={data.WORK_DT}>{dateofsum}</td> */}
-                        <td style={{ backgroundColor: "#f0f0f0" }} key={data.TITLE}>{data.TITLE}</td>
+                          {(() => {
+                          if (index % 2 === 0) {
+                            var dateofsum = moment(data.WORK_DT.toString()).format("MM/DD");    
+                            console.log(dateofsum)
+                          return (
+                            <td rowSpan={2} style={{ backgroundColor: "#f0f0f0" }} key={data.WORK_DT}>{dateofsum}</td>
+                          ) 
+                        }
+                          })()}
+                              {(() => {
+                          if (index % 2 === 0) {
+                          return (
+                            <td rowSpan={2} style={{ backgroundColor: "#f0f0f0" }} key={data.WORK_DT}>{data.TITLE}</td>
+                          ) 
+                        }})()}
                         <td style={{ backgroundColor: "#f0f0f0" }} key={data.GB}>{data.GB}</td>
-                        {/* <td>{data.Line1}</td> */}
                         <Cell
                           value={
                             data.Line1.endsWith("%")
@@ -454,7 +469,6 @@ function App() {
               <div className="font-8">Last Update: {date}</div>
             </div>
 
-            <div className="padding-5 ">
               <div className="padding-left ">
                 <table className="tb">
                   <caption>Production Status (Hourly)</caption>
@@ -623,7 +637,6 @@ function App() {
                 <div className="font-8">Last Update: {date}</div>
               </div>{" "}
               {/* end of second table */}
-            </div>
           </header>
         </div>
       </div>

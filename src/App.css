@@ -24,6 +24,9 @@
   color: rgb(0, 0, 0);
   min-width: min-content;
 }
+.big{
+  font-size: calc(10px + 3vmin);
+}
 
 .App-link {
   color: #61dafb;
@@ -64,7 +67,7 @@ table.tb {
   padding-left: 190px;
 }
 .padding-left {
-  padding-left: 470px;
+  padding-left: 400px;
 }
 
 .font-8 {
